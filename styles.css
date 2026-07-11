@@ -1251,8 +1251,8 @@ textarea {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  /* 焦点落在骑行者：水平略偏右、垂直偏上，保证人物在裁切后居中 */
-  object-position: 62% 38%;
+  /* 焦点落在骑行者：再右移，纠正人物偏左 */
+  object-position: 74% 38%;
 }
 
 .about-badge {
