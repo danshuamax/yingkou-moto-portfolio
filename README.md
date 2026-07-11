@@ -2,6 +2,13 @@
 
 摄影约拍 · AIGC 创作
 
+## 线上地址（公开）
+
+**https://danshuamax.github.io/yingkou-moto-portfolio/**
+
+仓库：https://github.com/danshuamax/yingkou-moto-portfolio  
+托管：GitHub Pages（`main` 分支根目录）
+
 ## 服务细分
 
 ### 摄影约拍套餐
