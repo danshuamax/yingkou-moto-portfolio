@@ -18,11 +18,10 @@
 
 ## 页面结构
 
-Hero → 作品集（精选大卡 + AIGC 入口）→ 约拍套餐 → 关于 → 拍摄日志 → 预约联系
+Hero → 作品集（精选大卡 + AIGC 入口）→ 约拍套餐 → 关于 → 预约联系
 
 - 精选大卡：`works.js` → `FEATURED_PROJECTS`
 - 作品数据：`works.js` → `PORTFOLIO_WORKS`（点击大卡/AIGC 入口时用灯箱浏览）
-- 拍摄日志：`journal.js`
 
 ## 本地预览
 

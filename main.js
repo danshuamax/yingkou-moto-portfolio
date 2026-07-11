@@ -580,51 +580,10 @@
     formNote.classList.add("is-ok");
   });
 
-  // —— 拍摄日志 ——
-  function renderJournal() {
-    const list = document.getElementById("journalList");
-    const entries = window.JOURNAL_ENTRIES || [];
-    if (!list) return;
-    list.innerHTML = "";
-
-    if (!entries.length) {
-      list.innerHTML =
-        '<p class="gallery-empty">拍摄日志即将更新，敬请期待。</p>';
-      return;
-    }
-
-    entries.forEach((entry) => {
-      const isLink = Boolean(entry.link);
-      const el = document.createElement(isLink ? "a" : "article");
-      el.className = "journal-card";
-      if (isLink) {
-        el.href = entry.link;
-      }
-
-      const coverHtml = entry.cover
-        ? `<div class="journal-cover"><img src="${escapeAttr(entry.cover)}" alt="" loading="lazy" /></div>`
-        : `<div class="journal-cover"></div>`;
-
-      el.innerHTML = `
-        ${coverHtml}
-        <div class="journal-body">
-          <div class="journal-meta">
-            <span class="journal-date">${escapeHtml(entry.date || "")}</span>
-            <span class="journal-tag">${escapeHtml(entry.tag || "")}</span>
-          </div>
-          <h3>${escapeHtml(entry.title || "")}</h3>
-          <p>${escapeHtml(entry.excerpt || "")}</p>
-          ${isLink ? '<span class="journal-more">查看相关 →</span>' : ""}
-        </div>
-      `;
-      list.appendChild(el);
-    });
-  }
-
   // —— 滚动显现 ——
   function setupReveal() {
     const revealTargets = document.querySelectorAll(
-      ".section-head, .work-heading, .project-card, .aigc-home, .price-card, .about-visual, .about-copy, .journal-card, .contact-item, .contact-form"
+      ".section-head, .work-heading, .project-card, .aigc-home, .price-card, .about-visual, .about-copy, .contact-item, .contact-form"
     );
     revealTargets.forEach((el) => el.classList.add("reveal"));
 
@@ -648,6 +607,5 @@
 
   renderFeaturedProjects();
   renderAigcHome();
-  renderJournal();
   setupReveal();
 })();
