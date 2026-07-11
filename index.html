@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="营口机车影像 — 摄影约拍（动态跟拍短片 / 单人机车写真）· AIGC（AI 视频 / AI 设计）" />
+  <title>营口机车影像 | 摄影约拍 · AIGC 设计</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="营口机车影像 首页">
+      <img src="assets/brand/logo-white.png" alt="营口机车影像" class="brand-logo" />
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#portfolio">作品集</a>
+      <a href="#pricing">约拍套餐</a>
+      <a href="#about">关于</a>
+      <a href="#journal">拍摄日志</a>
+      <a href="#contact" class="nav-cta">预约拍摄</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-media">
+      <img src="assets/brand/hero-home.jpg" alt="营口机车影像 · 机车潮流主视觉" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">YINGKOU MOTORCYCLE IMAGE</p>
+      <img src="assets/brand/logo-white.png" alt="营口机车影像" class="hero-logo" />
+      <p class="hero-tagline">摄影约拍 · 机车写真 · AIGC 创作</p>
+      <p class="hero-desc">
+        动态跟拍电影感短片 · 单人机车写真<br />
+        AI 视频作品 · AI 设计作品 — 持续更新中
+      </p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn btn-primary">浏览作品</a>
+        <a href="#contact" class="btn btn-ghost">联系约拍</a>
+      </div>
+    </div>
+    <a href="#portfolio" class="scroll-hint" aria-label="向下滚动">
+      <span>SCROLL</span>
+      <i></i>
+    </a>
+  </section>
+
+  <!-- Portfolio · 精选项目大卡（参考 yingkou-moto-portfolio 版式） -->
+  <section class="section portfolio work-section" id="portfolio">
+    <div class="container portfolio-container">
+      <div class="work-heading">
+        <div>
+          <p class="kicker">SELECTED WORK / 2026</p>
+          <h2>精选作品</h2>
+        </div>
+        <p class="section-intro">
+          从沿海公路到城市夜色，画面不只记录一辆车，也记录骑手当时的状态与故事。
+        </p>
+      </div>
+
+      <div class="project-grid" id="projectGrid" aria-label="精选作品"></div>
+      <p class="demo-note">左侧短片为动态预览，点击卡片可全屏查看。</p>
+
+      <!-- AIGC 入口 -->
+      <div class="aigc-home" id="aigcHome">
+        <div class="aigc-home-copy">
+          <p class="kicker kicker-light">GENERATIVE / MOTION / DESIGN</p>
+          <h2>AIGC<br /><em>作品集</em></h2>
+          <p class="aigc-home-intro">用生成式影像拓展机车摄影之外的视觉表达。这里持续收录 AI 视频与 AI 设计项目。</p>
+          <button type="button" class="btn btn-ghost" id="aigcBrowseAll">浏览全部项目 <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="aigc-home-cover" id="aigcHomeCover">
+          <!-- 由 JS 填充封面与分类卡 -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIGC 项目浏览器 -->
+  <div class="project-browser" id="projectBrowser" hidden>
+    <div class="project-browser-panel" role="dialog" aria-modal="true" aria-labelledby="pbTitle">
+      <header class="pb-head">
+        <div>
+          <p class="pb-kicker" id="pbKicker">AI PROJECTS</p>
+          <h3 id="pbTitle">项目列表</h3>
+        </div>
+        <button type="button" class="pb-close" id="pbClose" aria-label="关闭">×</button>
+      </header>
+      <div class="pb-grid" id="pbGrid"></div>
+      <p class="pb-empty" id="pbEmpty" hidden>该分类下还没有项目。在对应文件夹新建「项目名」并放入作品后，运行「更新作品」即可。</p>
+    </div>
+  </div>
+
+  <!-- Pricing（置于作品集下方） -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">PACKAGES</p>
+        <h2>约拍套餐</h2>
+        <p class="section-sub">价格透明 · 按需选择 · 微信预约即可锁定档期</p>
+      </header>
+
+      <div class="price-grid">
+        <article class="price-card">
+          <div class="price-card-top">
+            <span class="price-tag">写真</span>
+            <h3>单人机车写真</h3>
+            <p class="price-desc">适合车主个人形象与机车氛围记录</p>
+            <div class="price-amount">
+              <span class="currency">¥</span>
+              <strong>299</strong>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li>约 <strong>1.5 小时</strong> 拍摄</li>
+            <li><strong>12 张</strong> 精修照片</li>
+            <li><strong>1 个场景</strong> · <strong>1 套造型</strong></li>
+            <li>底片精选 + 色彩统一调色</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#contact" data-package="moto-299">预约此套餐</a>
+        </article>
+
+        <article class="price-card is-popular">
+          <div class="price-badge">热门</div>
+          <div class="price-card-top">
+            <span class="price-tag">短片</span>
+            <h3>电影感机车短片</h3>
+            <p class="price-desc">有运镜与节奏的机车动态成片</p>
+            <div class="price-amount">
+              <span class="currency">¥</span>
+              <strong>499</strong>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li><strong>15–30 秒</strong> 成片</li>
+            <li><strong>脚本与分镜</strong> 设计</li>
+            <li>竖屏 / 横屏 <strong>二选一</strong></li>
+            <li>电影感调色与基础音效</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#contact" data-package="film-499">预约此套餐</a>
+        </article>
+
+        <article class="price-card is-combo">
+          <div class="price-card-top">
+            <span class="price-tag">组合</span>
+            <h3>影像故事组合</h3>
+            <p class="price-desc">照片 + 短片一次拍全，双场景叙事</p>
+            <div class="price-amount">
+              <span class="currency">¥</span>
+              <strong>799</strong>
+            </div>
+          </div>
+          <ul class="price-features">
+            <li><strong>18 张</strong> 精修照片</li>
+            <li><strong>30–45 秒</strong> 短片</li>
+            <li><strong>双场景</strong> 拍摄</li>
+            <li>写真 + 短片一体交付</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="#contact" data-package="combo-799">预约此套餐</a>
+        </article>
+      </div>
+
+      <p class="price-note">
+        以上为营口本地基础套餐；外地出行、加场景 / 加造型、加精修与加长成片可另议。
+        预约请微信 <strong>jun365050207</strong> 或填写下方表单。
+      </p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <img src="assets/portfolio/photo/moto/web/DSC08845.jpg" alt="机车拍摄现场" />
+        <div class="about-badge">
+          <strong>营口</strong>
+          <span>辽宁 · 渤海湾</span>
+        </div>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">ABOUT</p>
+        <h2>关于营口机车影像</h2>
+        <p>
+          专注<strong>摄影约拍</strong>与 <strong>AIGC 创作</strong>：
+          动态跟拍电影感短片、单人机车写真，以及 AI 视频与 AI 设计。
+          作品集会陆续更新，记录每一次上路与每一次想象。
+        </p>
+        <p>
+          品牌名取自营口这片土地与机车文化的结合——真实、硬朗、也带一点海风的松弛。
+          书法标识保留手写温度，画面则追求电影感与质感细节。
+        </p>
+        <dl class="stats">
+          <div>
+            <dt>摄影约拍</dt>
+            <dd>跟拍短片 · 机车写真</dd>
+          </div>
+          <div>
+            <dt>AIGC</dt>
+            <dd>AI 视频 · AI 设计</dd>
+          </div>
+          <div>
+            <dt>所在地</dt>
+            <dd>辽宁营口</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 拍摄日志 -->
+  <section class="section journal" id="journal">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">SHOOT LOG</p>
+        <h2>拍摄日志</h2>
+        <p class="section-sub">记录每一次上路、每一次成片背后的光影与故事 · 持续更新</p>
+      </header>
+      <div class="journal-list" id="journalList" aria-live="polite">
+        <!-- 由 journal.js + main.js 渲染 -->
+      </div>
+      <p class="journal-hint">更多日志将陆续更新，欢迎约拍后出现在下一篇故事里。</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">CONTACT</p>
+        <h2>预约与合作</h2>
+        <p class="section-sub">填写意向或直接通过下方方式联系，通常 24 小时内回复</p>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-cards">
+          <a class="contact-item" href="weixin://" aria-label="微信 jun365050207">
+            <span class="ci-label">微信</span>
+            <strong>jun365050207</strong>
+            <span class="ci-hint">添加好友备注「约拍」</span>
+          </a>
+          <a class="contact-item" href="tel:15541719527">
+            <span class="ci-label">电话</span>
+            <strong>155-4171-9527</strong>
+            <span class="ci-hint">点击可直接拨打</span>
+          </a>
+          <a class="contact-item" href="mailto:15541719527@139.com">
+            <span class="ci-label">邮箱</span>
+            <strong>15541719527@139.com</strong>
+            <span class="ci-hint">合作 / 商务询价</span>
+          </a>
+          <div class="contact-item static">
+            <span class="ci-label">地区</span>
+            <strong>辽宁 · 营口</strong>
+            <span class="ci-hint">可协商外拍行程</span>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">称呼</label>
+            <input id="name" name="name" type="text" placeholder="怎么称呼你" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="channel">联系方式</label>
+            <input id="channel" name="channel" type="text" placeholder="微信 / 手机号 / 邮箱" required />
+          </div>
+          <div class="field">
+            <label for="type">意向类型</label>
+            <select id="type" name="type">
+              <option value="moto-299">单人机车写真 · ¥299</option>
+              <option value="film-499">电影感机车短片 · ¥499</option>
+              <option value="combo-799">影像故事组合 · ¥799</option>
+              <option value="ai-video">AIGC · AI 视频作品</option>
+              <option value="ai-design">AIGC · AI 设计作品</option>
+              <option value="other">其他合作 / 定制</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="msg">需求简述</label>
+            <textarea id="msg" name="msg" rows="4" placeholder="拍摄日期、车型、人数、风格参考、预算区间等"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">发送意向</button>
+          <p class="form-note" id="formNote">提交后会打开邮件草稿；你也可直接微信联系 jun365050207。</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/brand/logo-white.png" alt="" class="footer-logo" />
+      <p>© <span id="year"></span> 营口机车影像 · 摄影约拍 · AIGC 创作</p>
+      <a href="#top" class="back-top">回到顶部 ↑</a>
+    </div>
+  </footer>
+
+  <!-- Lightbox：支持图片与视频 -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
+    <button class="lb-nav prev" id="lbPrev" aria-label="上一张">‹</button>
+    <figure class="lb-figure">
+      <div class="lb-media" id="lbMedia"></div>
+      <figcaption>
+        <strong id="lbTitle"></strong>
+        <span id="lbMeta"></span>
+      </figcaption>
+    </figure>
+    <button class="lb-nav next" id="lbNext" aria-label="下一张">›</button>
+  </div>
+
+  <script src="works.js"></script>
+  <script src="journal.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

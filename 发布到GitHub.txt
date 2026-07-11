@@ -1,0 +1,62 @@
+营口机车影像 · 发布到 GitHub Pages
+================================
+
+一、准备（只需做一次）
+----------------------
+1. 注册并登录 https://github.com
+2. 安装 GitHub 命令行（可选，更方便）：
+   brew install gh
+   gh auth login
+   （按提示用浏览器登录）
+
+二、创建仓库并上传
+----------------
+在「终端」中依次执行：
+
+  cd ~/Downloads/营口机车影像
+
+  # 若还没有 git 仓库：
+  git init
+  git add .
+  git status
+  git commit -m "发布营口机车影像个人主页"
+
+  # 登录后创建 GitHub 仓库并推送（推荐）：
+  gh repo create yingkou-moto-portfolio --public --source=. --remote=origin --push
+
+  # 若不用 gh，请先在网页新建空仓库 yingkou-moto-portfolio，再执行：
+  # git remote add origin https://github.com/你的用户名/yingkou-moto-portfolio.git
+  # git branch -M main
+  # git push -u origin main
+
+三、打开 GitHub Pages
+--------------------
+1. 打开仓库网页 → Settings（设置）
+2. 左侧点 Pages
+3. Build and deployment → Source 选「Deploy from a branch」
+4. Branch 选 main，文件夹选 / (root) → Save
+5. 等 1～3 分钟，刷新 Pages 页面，会出现网址，例如：
+
+   https://你的用户名.github.io/yingkou-moto-portfolio/
+
+四、把链接发给别人
+----------------
+把上面的 https 链接发微信 / 短信即可。手机和电脑浏览器都能打开。
+
+五、以后更新网站
+----------------
+改完作品后：
+
+  cd ~/Downloads/营口机车影像
+  python3 sync-works.py
+  git add .
+  git commit -m "更新作品"
+  git push
+
+再等一两分钟，网上就会变成新版本。
+
+注意
+----
+- 原片在 assets/_originals/，不会上传（体积太大）
+- 网站用的是压缩后的 web 图和视频，别人打开会更快
+- 单文件不要超过 100MB（GitHub 限制）
