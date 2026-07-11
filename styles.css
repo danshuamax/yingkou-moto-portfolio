@@ -163,14 +163,14 @@ textarea {
   transform: rotate(-45deg);
 }
 
-/* Hero */
+/* Hero — 左侧排版（参考海报式布局） */
 .hero {
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
-  display: grid;
-  place-items: center;
-  padding: calc(var(--header-h) + 24px) 24px 80px;
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--header-h) + 24px) 24px 10vh;
   overflow: hidden;
 }
 
@@ -183,7 +183,7 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: 70% 28%;
   transform: scale(1.04);
   animation: heroKen 18s ease-in-out infinite alternate;
 }
@@ -196,23 +196,32 @@ textarea {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  /* 主视觉偏亮：顶部略压、中部透出涂鸦与人物、底部加深以保证 logo/文案可读 */
+  /* 左侧加深保证文案可读，右侧透出主视觉人物 */
   background:
     linear-gradient(
-      180deg,
-      rgba(10, 10, 11, 0.52) 0%,
-      rgba(10, 10, 11, 0.22) 32%,
-      rgba(10, 10, 11, 0.45) 62%,
-      rgba(10, 10, 11, 0.9) 100%
+      90deg,
+      rgba(10, 10, 11, 0.88) 0%,
+      rgba(10, 10, 11, 0.55) 42%,
+      rgba(10, 10, 11, 0.18) 72%,
+      rgba(10, 10, 11, 0.35) 100%
     ),
-    radial-gradient(ellipse 70% 55% at 50% 42%, transparent 0%, rgba(10, 10, 11, 0.4) 100%);
+    linear-gradient(
+      180deg,
+      rgba(10, 10, 11, 0.45) 0%,
+      rgba(10, 10, 11, 0.12) 35%,
+      rgba(10, 10, 11, 0.55) 78%,
+      rgba(10, 10, 11, 0.88) 100%
+    );
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  max-width: 820px;
+  text-align: left;
+  max-width: min(720px, 92vw);
+  margin-left: max(0px, calc((100vw - var(--max)) / 2));
+  padding-left: 4.5vw;
+  padding-right: 24px;
 }
 
 .eyebrow {
@@ -222,6 +231,38 @@ textarea {
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 500;
+}
+
+.eyebrow-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.eyebrow-bar {
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+.hero-title {
+  margin: 12px 0 22px;
+  font-size: clamp(48px, 9vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+}
+
+.hero-title em {
+  font-style: normal;
+  color: var(--red);
 }
 
 .hero-logo {
@@ -239,17 +280,50 @@ textarea {
 }
 
 .hero-desc {
-  margin: 0 auto 32px;
-  max-width: 34em;
-  color: var(--text-muted);
+  margin: 0 0 36px;
+  max-width: 28em;
+  color: rgba(255, 255, 255, 0.62);
   font-size: 0.98rem;
+  line-height: 1.75;
+  text-align: left;
 }
 
 .hero-actions {
   display: flex;
-  gap: 14px;
-  justify-content: center;
+  gap: 28px;
+  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
+}
+
+.btn-hero {
+  border-radius: 4px;
+  background: var(--red);
+  color: #fff;
+  min-width: 168px;
+  justify-content: space-between;
+  gap: 36px;
+  padding: 0 20px;
+  font-weight: 650;
+}
+
+.btn-hero:hover {
+  background: var(--red-deep);
+  color: #fff;
+}
+
+.text-link {
+  color: #fff;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 6px;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.text-link:hover {
+  border-color: #fff;
+  opacity: 0.92;
 }
 
 .btn {
@@ -1430,6 +1504,7 @@ a.journal-card:hover {
 
 .contact-cards {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
@@ -1663,11 +1738,22 @@ a.contact-item:hover {
   .price-grid,
   .about-grid,
   .contact-grid,
+  .contact-cards,
   .journal-card,
   .work-heading,
   .project-grid,
   .aigc-home {
     grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    margin-left: 0;
+    padding-left: 20px;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(42px, 12vw, 72px);
   }
 
   .work-heading {
@@ -1718,6 +1804,21 @@ a.contact-item:hover {
   .project-card,
   .project-card--wide {
     min-height: 110vw;
+  }
+
+  .hero {
+    padding-bottom: 12vh;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .btn-hero {
+    width: 100%;
+    max-width: 280px;
   }
 }
 
